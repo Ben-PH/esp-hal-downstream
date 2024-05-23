@@ -85,7 +85,7 @@ pub unsafe extern "C" fn ESP32Reset() -> ! {
     }
 
     crate::interrupt::setup_interrupts();
-    crate::time::time_init();
+    let _ = crate::time::SysUptime::time_init();
 
     // continue with default reset handler
     xtensa_lx_rt::Reset();
